@@ -2,7 +2,10 @@ const program = require("commander");
 const {prompt}=require('inquirer');
 const {
     addCustomer,
-    findCutomer
+    findCutomer,
+    updateCustomer,
+    removeCustomer,
+    listCustomers
 } = require('./index');
 
 //Customer Questions
@@ -28,7 +31,7 @@ const questions = [
 
 program
   .description('client Management System ')
-  .version('0.8.0');
+  .version('9.3.0');
 
 //   program
 //   .command('add <firstname> <lastname> <phone> <email>')
@@ -37,6 +40,9 @@ program
 //   .action((firstname ,lastname,phone,email)=>{
 //     addCustomer({firstname,lastname,phone,email});
 //   });
+
+
+// ADD commants
 program 
 .command('add')
 .alias('a')
@@ -45,11 +51,21 @@ program
   prompt(questions).then(answers=> addCustomer(answers));
 })
 
+//Find command
   program
   .command('find <name>')
   .alias('f')
   .description('find a cutomer ')
-  .action(name =>findCutomer(name))
+  .action(name =>findCutomer(name));
+
+//update command
+program 
+.command('update <_id>')
+.alias('u')
+.description('update a customer')
+.action(_id =>{
+  prompt(questions).then(answers=> updateCustomer(_id,answers));
+})
 
 
   program.parse(process.argv);
