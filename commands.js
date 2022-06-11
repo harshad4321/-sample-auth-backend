@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require("commander");
 const {prompt}=require('inquirer');
 const {
@@ -66,6 +68,23 @@ program
 .action(_id =>{
   prompt(questions).then(answers=> updateCustomer(_id,answers));
 })
+
+//Remove  command
+program 
+.command('remove <name>')
+.alias('r')
+.description('remove a customer')
+.action(_id => removeCustomer(_id));
+
+//list  command
+program 
+.command('list ')
+.alias('l')
+.description('List all customers')
+.action(() =>  listCustomers());
+
+
+
 
 
   program.parse(process.argv);
