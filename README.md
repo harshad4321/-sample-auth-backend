@@ -27,3 +27,7 @@ $node commands.js update (copy and paste the ID )
 # for remove 
 
  $ node commands.js remove  (copy and paste the ID )
+ 
+ #for list 
+ $ node commands.js list
+ 
